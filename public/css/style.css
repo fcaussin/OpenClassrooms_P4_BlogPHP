@@ -1,0 +1,75 @@
+/* ------------- POLICES DU SITE ------------- */
+
+@font-face {
+  font-family: 'robotoregular';
+  src: url('../font/Roboto-Regular-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotobold';
+  src: url('../font/Roboto-Bold-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotomedium';
+  src: url('../font/Roboto-Medium-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'robotoblack';
+  src: url('../font/Roboto-Black-webfont.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+/* ------------- REGLES DU SITE ------------- */
+
+/* Mise en page général ------------- */
+body {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  font-family: 'robotoregular', Arial, sans-serif;
+  background: white;
+}
+.bloc_page {
+  max-width: 1366px;
+  width: 100%;
+  margin: auto;
+  border: 1px solid grey;
+}
+
+#header {
+  border: 1px solid black;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#header h1 {
+  border: 1px solid green;
+}
+
+.aside {
+  border: 1px solid red;
+  padding: 20px;
+}
+
+.main {
+  display: flex;
+  flex-direction: row;
+}
+
+.content {
+  padding: 50px;
+  width: 80%;
+}
