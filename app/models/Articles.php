@@ -50,7 +50,7 @@
     }
 
     // SETTERS
-    
+
     public function setId($id)
     {
       $this->id = (int) $id;

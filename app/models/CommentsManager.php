@@ -11,16 +11,9 @@
     {
       $sql = "SELECT id, articleId, username, comment, DATE_FORMAT(dateCom, '%d/%m/%Y à %Hh%imin%ss') AS dateCom_fr FROM comments WHERE articleId = ? ORDER BY dateCom DESC";
 
-      $req = $this->executeRequest($sql, array($articleId));
-      $comments = $req->fetchAll();
+      $comments = $this->executeRequest($sql, array($articleId));
 
-      $commentsById = array();
-      foreach ($comments as $data) {
-        $data = new Comments($data);
-        array_push($commentsById, $data);
-      }
-
-      return $commentsById;
+      return $comments;
     }
 
     // Ajoute un commentaire
@@ -41,7 +34,7 @@
       return $newComment;
     }
 
-    // Efface un commentaire 
+    // Efface un commentaire
     public function deleteComment($id)
     {
       $sql = "DELETE FROM comments WHERE id = ?";
