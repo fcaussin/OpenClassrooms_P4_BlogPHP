@@ -6,37 +6,46 @@
 
   class CommentsManager extends PDOManager
   {
-    public function getComments()
+    // Récupère les commentaires d'un article
+    public function getComments($articleId)
     {
-      $db = $this->dbConnect();
-      $req = $db->query("SELECT id, articleId, author, comment, DATE_FORMAT(dateCom, '%d/%m/%Y à %Hh%imin%ss') AS dateCom_fr FROM comments ORDER BY dateCom DESC");
+      $sql = "SELECT id, articleId, username, comment, DATE_FORMAT(dateCom, '%d/%m/%Y à %Hh%imin%ss') AS dateCom_fr FROM comments WHERE articleId = ? ORDER BY dateCom DESC";
 
-      return $req;
+      $req = $this->executeRequest($sql, array($articleId));
+      $comments = $req->fetchAll();
+
+      $commentsById = array();
+      foreach ($comments as $data) {
+        $data = new Comments($data);
+        array_push($commentsById, $data);
+      }
+
+      return $commentsById;
     }
 
-    public function addComment($articleId, $author, $comment)
+    // Ajoute un commentaire
+    public function addComment($articleId, $username, $comment)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("INSERT INTO comments(articleId, author, comment, dateCom) VALUES(?,?,?,NOW())");
-      $newComment = $req->execute(array($articleId, $author, $comment));
+      $sql = "INSERT INTO comments(articleId, username, comment, dateCom) VALUES(?,?,?,NOW())";
+      $newComment = $this->executeRequest($sql, array($articleId, $username, $comment));
 
       return $newComment;
     }
 
-    public function updateComment($id, $articleId, $author, $comment)
+    // Modifie un commentaire
+    public function updateComment($id, $articleId, $username, $comment)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("UPDATE comments SET articleId = ?, author = ?, comment = ? WHERE id = ?");
-      $newComment = $req->execute(array($id, $articleId, $author, $comment));
+      $sql = "UPDATE comments SET articleId = ?, username = ?, comment = ? WHERE id = ?";
+      $newComment = $this->executeRequest($sql, array($id, $articleId, $username, $comment));
 
       return $newComment;
     }
 
+    // Efface un commentaire 
     public function deleteComment($id)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("DELETE FROM comments WHERE id = ?");
-      $req->execute(array($id));
+      $sql = "DELETE FROM comments WHERE id = ?";
+      $this->executeRequest($sql, array($id));
     }
   }
 ?>

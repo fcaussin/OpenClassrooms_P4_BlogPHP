@@ -6,48 +6,58 @@
 
   class ArticlesManager extends PDOManager
   {
+    // Récupère les 3 derniers articles avec un aperçu du contenu
     public function getArticles()
     {
-      $db = $this->dbConnect();
-      $req = $db->query("SELECT id, title, SUBSTRING(content, 1, 500) AS preview, DATE_FORMAT(dateArt, '%d/%m/%Y à %Hh%imin%ss') AS dateArt_fr FROM articles ORDER BY dateArt DESC LIMIT 0, 3");
+      $sql = "SELECT id, title, SUBSTRING(content, 1, 500) AS preview, DATE_FORMAT(dateArt, '%d/%m/%Y à %Hh%imin%ss') AS dateArt_fr FROM articles ORDER BY dateArt DESC LIMIT 0, 3";
+      $articles = $this->executeRequest($sql);
 
-      return $req;
+      return $articles;
     }
 
+    // Récupère la liste des titres des articles
+    public function getArticlesList()
+    {
+      $sql = "SELECT id, title FROM articles";
+      $articlesList = $this->executeRequest($sql);
+
+      return $articlesList;
+    }
+
+    // Récupère un article avec son id
     public function getArticle($articleId)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("SELECT id, title, content, DATE_FORMAT(dateArt, '%d/%m/%Y à %Hh%imin%ss') AS dateArt_fr FROM articles WHERE id = ?");
+      $sql = "SELECT id, title, content, DATE_FORMAT(dateArt, '%d/%m/%Y à %Hh%imin%ss') AS dateArt_fr FROM articles WHERE id = ?";
 
-      $req->execute(array($articleId));
+      $req = $this->executeRequest($sql, array($articleId));
       $article = $req->fetch();
 
       return $article;
     }
 
+    // Ajoute un article
     public function addArticle($title, $content)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("INSERT INTO articles(title, content, dateArt) VALUES(?,?,NOW())");
-      $newArticle = $req->execute(array($title, $content));
+      $sql = "INSERT INTO articles(title, content, dateArt) VALUES(?,?,NOW())";
+      $newArticle = $this->executeRequest($sql, array($title, $content));
 
       return $newArticle;
     }
 
+    // Modifie un article
     public function updateArticle($id, $title, $content)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("UPDATE articles SET title = ?, content = ? WHERE id = ?");
-      $newArticle = $req->execute(array($id, $title, $content));
+      $sql = "UPDATE articles SET title = ?, content = ? WHERE id = ?";
+      $newArticle = $this->executeRequest($sql, array($id, $title, $content));
 
       return $newArticle;
     }
 
+    // Efface un article
     public function deleteArticle($id)
     {
-      $db = $this->dbConnect();
-      $req = $db->prepare("DELETE FROM articles WHERE id = ?");
-      $req->execute(array($id));
+      $sql = "DELETE FROM articles WHERE id = ?";
+      $this->executeRequest($sql, array($id));
     }
   }
 ?>

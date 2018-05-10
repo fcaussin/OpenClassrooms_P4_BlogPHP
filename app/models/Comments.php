@@ -6,7 +6,7 @@
   {
     private $id,
             $articleId,
-            $author,
+            $username,
             $comment,
             $dateCom;
 
@@ -40,9 +40,9 @@
       return $this->articleId;
     }
 
-    public function getAuthor()
+    public function getUsername()
     {
-      return $this->author;
+      return $this->username;
     }
 
     public function getComment()
@@ -67,10 +67,10 @@
       $this->articleId = (int) $articleId;
     }
 
-    public function setAuthor($author)
+    public function setUsername($username)
     {
-      if (is_string($author)) {
-        $this->author = $author;
+      if (is_string($username)) {
+        $this->username = $username;
       }
     }
 
