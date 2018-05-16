@@ -49,19 +49,20 @@ body {
 }
 
 #header {
+  display: flex;
   border: 1px solid black;
   justify-content: center;
-  align-items: center;
-  text-align: center;
 }
 
 #header h1 {
+  padding: 10px;
   border: 1px solid green;
 }
 
 .aside {
-  border: 1px solid red;
+  border-right: 1px solid red;
   padding: 20px;
+  text-align: center;
 }
 
 .main {
@@ -70,6 +71,52 @@ body {
 }
 
 .content {
+  display: flex;
+  flex-direction: column;
   padding: 50px;
   width: 80%;
+}
+
+time {
+  font-style: italic;
+  font-size: 0.8em;
+}
+
+article p {
+  text-align: justify;
+}
+
+.readMore {
+  font-size: 0.8em;
+  font-style: italic;
+  text-decoration: none;
+  color: blue;
+}
+
+footer {
+  text-align: center;
+  border: 1px solid rgb(220,220,220);
+  background-color: rgb(220,220,220);
+  font-size: 0.8em;
+  color: grey;
+}
+
+
+/* ------------- FORMULAIRE COMMENTAIRE ------------- */
+
+
+.addComment input {
+  width: 80px;
+}
+
+.addComment {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 50%;
+  min-width: 250px;
+}
+
+#username {
+  width: 160px;
 }

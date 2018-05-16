@@ -1,14 +1,17 @@
 <?php $this->title = "Billet simple pour l'Alaska"; ?>
 
+<h2>Les derniers articles:</h2>
+
 <?php foreach ($articles as $article): ?>
   <article class="articlesPreview">
-    <header>
+    <p>
       <a href="<?= "index.php?action=article&id=" . $article['id'] ?>">
-        <h1 class="articleTitle"><?= $article['title'] ?></h1>
+        <h3 class="articleTitle"><?= $article['title'] ?></h3>
       </a>
-      <time><?= $article['dateArt_fr'] ?></time>
-    </header>
-    <p><?= $article['preview'] ?></p>
+      <time>Ajouté le : <?= $article['dateArt_fr'] ?></time>
+    </p>
+    <p><?= $article['preview'] ?><br /><a class="readMore" href="<?= "index.php?action=article&id=" . $article['id'] ?>">[Lire la suite...]</a>
+    </p>
   </article>
   <hr />
 <?php endforeach; ?>

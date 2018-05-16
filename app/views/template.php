@@ -28,6 +28,10 @@
       </div>
     </section>
 
+    <footer>
+      <p>Jean Forteroche - Billet simple pour l'Alaska</p>
+    </footer>
+
     </div>
   </body>
 </html>
