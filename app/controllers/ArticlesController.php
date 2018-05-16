@@ -24,5 +24,11 @@
       $view->generateView(array('article' => $article, 'comments' => $comments));
     }
 
+    public function commentArticle($articleId, $username, $comment)
+    {
+      $this->comments->addComment($articleId, $username, $comment);
+
+      $this->article($articleId);
+    }
   }
 ?>
