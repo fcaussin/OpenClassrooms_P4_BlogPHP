@@ -1,7 +1,7 @@
 <?php
   namespace App\Models;
 
-  use App\Models\PDOManager;
+  use App\Config\PDOManager;
 
 
   class ArticlesManager extends PDOManager
