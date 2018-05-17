@@ -9,18 +9,6 @@
     private static $parameters;
 
 
-    // Renvoie la valeur d'un paramètre de configuration
-    public static function get($name, $defaultValue = null)
-    {
-      if (isset(self::getParameters()[$name])) {
-        $value = self::getParameters()[$name];
-      }
-      else {
-        $value = $defaultValue;
-      }
-      return $value;
-    }
-
     // Renvoie le tableau des paramètres en le chargeant au besoin
     private static function getParameters()
     {
@@ -34,6 +22,18 @@
         }
       }
       return self::$parameters;
+    }
+
+    // Renvoie la valeur d'un paramètre de configuration
+    public static function get($name, $defaultValue = null)
+    {
+      if (isset(self::getParameters()[$name])) {
+        $value = self::getParameters()[$name];
+      }
+      else {
+        $value = $defaultValue;
+      }
+      return $value;
     }
   }
 ?>

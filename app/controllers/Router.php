@@ -20,7 +20,9 @@
     public function routerRequest()
     {
       try {
+        // Vérifie que la variable est définie
         if (isset($_GET['action'])) {
+          // Requête affichage d'un article en fonction de son id
           if ($_GET['action'] == 'article') {
             $articleId = intval($this->getParameter($_GET, 'id'));
             if ($articleId != 0) {
@@ -30,11 +32,25 @@
               throw new \Exception("Identifiant de l'article non valide");
             }
           }
+          // Requête ajout d'un commentaire
           elseif ($_GET['action'] == 'addComment') {
+            // Récupère les paramètres
             $articleId = $this->getParameter($_POST, 'idArticle');
             $username = $this->getParameter($_POST, 'username');
             $comment = $this->getParameter($_POST, 'txtComment');
+            // Ajoute le commentaire
             $this->ctrlArticles->commentArticle($articleId, $username, $comment);
+          }
+          // Requête signaler un commentaire
+          elseif ($_GET['action'] == 'reportComment') {
+            // Récupère les paramètres
+            $id = $this->getParameter($_POST, 'idComment');
+            $articleId = $this->getParameter($_POST, 'idArticle');
+            $username = $this->getParameter($_POST, 'username');
+            $comment = $this->getParameter($_POST, 'txtComment');
+            $report = 1;
+            // Signale un commentaire
+            $this->ctrlArticles->changeComment($articleId, $username, $comment, $report, $id);
           }
           else {
             throw new \Exception("Action non valide");
@@ -59,7 +75,7 @@
     private function getParameter($table, $name)
     {
       if (isset($table[$name])) {
-        return $table[$name];
+        return htmlspecialchars($table[$name]);
       } else {
         throw new \Exception("Paramètre " . $name . " absent");
       }

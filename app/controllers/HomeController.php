@@ -9,17 +9,20 @@
   {
     private $article;
 
+
     public function __construct()
     {
       $this->article = new ArticlesManager;
     }
 
-    // Affiche aperçu des derniers articles
+    // Affiche un aperçu des 3 derniers articles
     public function home()
     {
       $articles = $this->article->getArticles();
+      $articlesList = $this->article->getArticlesList();
       $view = new View("Home");
-      $view->generateView(array('articles' => $articles));
+      $view->generateView(array('articles' => $articles, 'articlesList' => $articlesList));
     }
+
   }
 ?>

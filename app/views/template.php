@@ -16,16 +16,9 @@
       <h1><a href="index.php">Billet simple pour l'Alaska</a></h1>
     </header>
 
+    <!-- SECTION PRINCIPALE -->
     <section class="main">
-      <!-- ASIDE -->
-      <aside class="aside">
-        <h2>Liste des chapitres</h2>
-      </aside>
-
-      <!-- SECTION PRINCIPALE -->
-      <div class="content">
         <?= $content ?>
-      </div>
     </section>
 
     <footer>

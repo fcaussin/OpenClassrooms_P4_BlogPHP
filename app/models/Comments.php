@@ -8,7 +8,8 @@
             $articleId,
             $username,
             $comment,
-            $dateCom;
+            $dateCom,
+            $report;
 
     public function hydrate($data)
     {
@@ -55,6 +56,11 @@
       return $this->dateCom;
     }
 
+    public function getReport()
+    {
+      return $this->report;
+    }
+
     // SETTERS
 
     public function setId($id)
@@ -84,6 +90,11 @@
     public function setDateCom($dateCom)
     {
       $this->dateCom = $dateCom;
+    }
+
+    public function setReport($report)
+    {
+      $this->report = $report;
     }
   }
 ?>
