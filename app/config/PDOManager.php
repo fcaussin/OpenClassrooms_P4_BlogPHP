@@ -29,18 +29,12 @@
       return self::$db;
     }
 
-    // Execute une requête SQL éventuellement paramétrée
+    // Execute une requête SQL paramétrée
     protected function executeRequest($sql, $vars = null)
     {
-      if ($vars == null) {
-        // Si pas de paramètres, exécution directe
-        $req = self::dbConnect()->query($sql);
-      }
-      else {
-        // Sinon exécution d'une requête préparée
+        // Exécution d'une requête préparée
         $req = self::dbConnect()->prepare($sql);
         $req->execute($vars);
-      }
 
       return $req;
     }

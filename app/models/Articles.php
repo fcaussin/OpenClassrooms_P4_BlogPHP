@@ -14,7 +14,7 @@
       foreach ($data as $key => $value) {
         $method = "set".ucfirst($key);
 
-        if (is_callable($this, $method)) {
+        if (method_exists($this, $method)) {
           $this->$method($value);
         }
       }
@@ -29,22 +29,22 @@
 
     // GETTERS
 
-    public function getId()
+    public function id()
     {
       return $this->id;
     }
 
-    public function getTitle()
+    public function title()
     {
       return $this->title;
     }
 
-    public function getContent()
+    public function content()
     {
       return $this->content;
     }
 
-    public function getDateArt()
+    public function dateArt()
     {
       return $this->dateArt;
     }

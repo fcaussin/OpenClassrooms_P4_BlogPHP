@@ -17,19 +17,19 @@
     }
 
     // Ajoute un commentaire
-    public function addComment($articleId, $username, $comment)
+    public function addComment(Comments $comments)
     {
       $sql = "INSERT INTO comments(articleId, username, comment, dateCom, report) VALUES(?,?,?,NOW(),0)";
-      $newComment = $this->executeRequest($sql, array($articleId, $username, $comment));
+      $newComment = $this->executeRequest($sql, array($comments->articleId(), $comments->username(), $comments->comment()));
 
       return $newComment;
     }
 
     // Modifie un commentaire
-    public function updateComment( $articleId, $username, $comment, $report, $id)
+    public function updateComment(Comments $comments)
     {
       $sql = "UPDATE comments SET articleId = ?, username = ?, comment = ?, report = ? WHERE id = ?";
-      $newComment = $this->executeRequest($sql, array($articleId, $username, $comment, $report, $id));
+      $newComment = $this->executeRequest($sql, array($comments->articleId(), $comments->username(), $comments->comment(), $comments->report(), $comments->id()));
 
       return $newComment;
     }

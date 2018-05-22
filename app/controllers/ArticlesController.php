@@ -3,6 +3,7 @@
 
   use App\Models\ArticlesManager;
   use App\Models\CommentsManager;
+  use App\Models\Comments;
   use App\Views\View;
 
   class ArticlesController
@@ -30,7 +31,8 @@
     // Ajoute un commentaire à un article
     public function commentArticle($articleId, $username, $comment)
     {
-      $this->comments->addComment($articleId, $username, $comment);
+      $newComment = new Comments(['articleId' => $articleId, 'username' => $username, 'comment' => $comment]);
+      $this->comments->addComment($newComment);
 
       // Affiche l'article avec son nouveau commentaire
       $this->article($articleId);
@@ -39,7 +41,8 @@
     // Modifie un commentaire d'un article
     public function changeComment($articleId, $username, $comment, $report, $id)
     {
-      $this->comments->updateComment($articleId, $username, $comment, $report, $id);
+      $commentUpdate = new Comments(['articleId' => $articleId, 'username' => $username, 'comment' => $comment, 'report' => $report, 'id' => $id]);
+      $this->comments->updateComment($commentUpdate);
 
       $this->article($articleId);
     }

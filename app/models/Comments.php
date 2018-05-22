@@ -16,7 +16,7 @@
       foreach ($data as $key => $value) {
         $method = "set".ucfirst($key);
 
-        if (is_callable($this, $method)) {
+        if (method_exists($this, $method)) {
           $this->$method($value);
         }
       }
@@ -31,32 +31,32 @@
 
     // GETTERS
 
-    public function getId()
+    public function id()
     {
       return $this->id;
     }
 
-    public function getArticleId()
+    public function articleId()
     {
       return $this->articleId;
     }
 
-    public function getUsername()
+    public function username()
     {
       return $this->username;
     }
 
-    public function getComment()
+    public function comment()
     {
       return $this->comment;
     }
 
-    public function getDateCom()
+    public function dateCom()
     {
       return $this->dateCom;
     }
 
-    public function getReport()
+    public function report()
     {
       return $this->report;
     }
@@ -94,7 +94,7 @@
 
     public function setReport($report)
     {
-      $this->report = $report;
+      $this->report = (int) $report;
     }
   }
 ?>

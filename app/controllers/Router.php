@@ -3,6 +3,7 @@
 
   use App\Controllers\ArticlesController;
   use App\Controllers\HomeController;
+  use App\Controllers\UsersController;
   use App\Views\View;
 
   class Router
@@ -14,6 +15,7 @@
     {
       $this->ctrlHome = new HomeController;
       $this->ctrlArticles = new ArticlesController;
+      $this->ctrlUsers = new UsersController;
     }
 
     // Traite une requête entrante
@@ -51,6 +53,9 @@
             $report = 1;
             // Signale un commentaire
             $this->ctrlArticles->changeComment($articleId, $username, $comment, $report, $id);
+          }
+          elseif ($_GET['action'] == 'login') {
+            $this->ctrlUsers->login();
           }
           else {
             throw new \Exception("Action non valide");
