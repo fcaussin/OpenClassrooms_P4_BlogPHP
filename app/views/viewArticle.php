@@ -44,12 +44,23 @@
         <fieldset class="reportComment">
           <legend><b><?= $comment['username'] ?></b> a commenté :</legend>
           <time>le <?= $comment['dateCom_fr'] ?></time>
-          <p><?= $comment['comment'] ?></p>
-          <input type="submit" value="Signaler" />
-          <input type="hidden" name="idArticle" value="<?= $comment['articleId'] ?>" />
-          <input type="hidden" name="username" value="<?= $comment['username'] ?>" />
-          <input type="hidden" name="txtComment" value="<?= $comment['comment'] ?>" />
-          <input type="hidden" name="idComment" value="<?= $comment['id'] ?>" />
+
+          <!-- Si commentaire n'est pas signalé -->
+          <?php if (!$comment['report']) { ?>
+            <!-- Affiche le commentaire -->
+            <p><?= $comment['comment'] ?></p>
+            <input type="submit" value="Signaler" />
+            <!-- Données envoyé si le commentaire est signalé -->
+            <input type="hidden" name="idArticle" value="<?= $comment['articleId'] ?>" />
+            <input type="hidden" name="username" value="<?= $comment['username'] ?>" />
+            <input type="hidden" name="txtComment" value="<?= $comment['comment'] ?>" />
+            <input type="hidden" name="idComment" value="<?= $comment['id'] ?>" />
+
+            <!-- Sinon affiche que le commentaire a été signalé -->
+          <?php } else {
+              echo "<p class='signal'>CE COMMENTAIRE A ETE SIGNALE !!</p>";
+            }
+          ?>
         </fieldset>
       </form>
     <?php endforeach; ?>

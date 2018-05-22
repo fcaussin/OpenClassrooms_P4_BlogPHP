@@ -54,8 +54,21 @@
             // Signale un commentaire
             $this->ctrlArticles->changeComment($articleId, $username, $comment, $report, $id);
           }
+          // Requête affiche le formulaire de connexion si session vide
           elseif ($_GET['action'] == 'login') {
-            $this->ctrlUsers->login();
+            if (empty($_SESSION)) {
+              require('../app/views/viewLogin.php');
+            }
+            // Sinon affiche la page accueil d'administration  
+            else {
+              $this->ctrlUsers->generateAdmin();
+            }
+          }
+          // Requête connexion à la partie administration
+          elseif ($_GET['action'] == 'adminLogin') {
+            $username = $this->getParameter($_POST, 'username');
+            $password = $this->getParameter($_POST, 'password');
+            $this->ctrlUsers->login($username, $password);
           }
           else {
             throw new \Exception("Action non valide");

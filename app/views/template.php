@@ -17,7 +17,15 @@
       <h1>Billet simple pour l'Alaska</h1>
       <ul>
         <li><a href="index.php"><i class="fas fa-home"></i> Accueil</a></li>
-        <li><a href="index.php?action=login"><i class="fas fa-user-edit"></i> Administration</a></li>
+
+        <!-- Affiche l'utilisateur si session existe -->
+          <li><a href="index.php?action=login"><i class="fas fa-user-edit"></i>
+            <?php if (empty($_SESSION)) { echo "Administration";
+              } else {
+                echo $_SESSION['username'];
+              }
+            ?>
+          </a></li>
       </ul>
     </header>
 
