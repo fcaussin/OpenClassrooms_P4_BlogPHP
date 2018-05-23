@@ -37,7 +37,7 @@
           // Requête ajout d'un commentaire
           elseif ($_GET['action'] == 'addComment') {
             // Récupère les paramètres
-            $articleId = $this->getParameter($_POST, 'idArticle');
+            $articleId = intval($this->getParameter($_POST, 'idArticle'));
             $username = $this->getParameter($_POST, 'username');
             $comment = $this->getParameter($_POST, 'txtComment');
             // Ajoute le commentaire
@@ -46,8 +46,8 @@
           // Requête signaler un commentaire
           elseif ($_GET['action'] == 'reportComment') {
             // Récupère les paramètres
-            $id = $this->getParameter($_POST, 'idComment');
-            $articleId = $this->getParameter($_POST, 'idArticle');
+            $id = intval($this->getParameter($_POST, 'idComment'));
+            $articleId = intval($this->getParameter($_POST, 'idArticle'));
             $username = $this->getParameter($_POST, 'username');
             $comment = $this->getParameter($_POST, 'txtComment');
             $report = 1;
@@ -57,9 +57,10 @@
           // Requête affiche le formulaire de connexion si session vide
           elseif ($_GET['action'] == 'login') {
             if (empty($_SESSION)) {
+              $errorLogin = null;
               require('../app/views/viewLogin.php');
             }
-            // Sinon affiche la page accueil d'administration  
+            // Sinon affiche la page accueil d'administration
             else {
               $this->ctrlUsers->generateAdmin();
             }
@@ -70,6 +71,34 @@
             $password = $this->getParameter($_POST, 'password');
             $this->ctrlUsers->login($username, $password);
           }
+          // Requête de deconnexion
+          elseif ($_GET['action'] == 'disconnect') {
+            $this->ctrlUsers->disconnect();
+            $this->ctrlHome->home();
+          }
+          // Vérifie qu'une seesion existe
+          elseif (isset($_SESSION['id'])) {
+            // Requête de modification de commentaire
+            if ($_GET['action'] == 'updateComment') {
+              $id = intval($this->getParameter($_POST, 'idComment'));
+              $articleId = intval($this->getParameter($_POST, 'idArticle'));
+              $username = $this->getParameter($_POST, 'username');
+              $comment = $this->getParameter($_POST, 'txtReportCom');
+              $report = null;
+              // Modifie un commentaire
+              $this->ctrlArticles->changeComment($articleId, $username, $comment, $report, $id);
+            }
+            // Requête de suppression d'un commentaire
+            elseif ($_GET['action'] == 'deleteComment') {
+              $id_Get= intval($this->getParameter($_GET, 'id'));
+              $id = intval($this->getParameter($_POST,'idComment'));
+              // Si id du commentaire valide on le supprime
+              if ($id_Get == $id) {
+                $this->ctrlUsers->eraseComment($id);
+              }
+            }
+          }
+
           else {
             throw new \Exception("Action non valide");
           }
@@ -93,6 +122,7 @@
     private function getParameter($table, $name)
     {
       if (isset($table[$name])) {
+        // Nettoie une valeur entrée par l'utilisateur
         return htmlspecialchars($table[$name]);
       } else {
         throw new \Exception("Paramètre " . $name . " absent");

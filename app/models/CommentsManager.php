@@ -16,10 +16,20 @@
       return $comments;
     }
 
+    // Récupère les commentaires signalés
+    public function getReport()
+    {
+      $sql = "SELECT id, articleId, username, comment, DATE_FORMAT(dateCom, '%d/%m/%Y à %Hh%imin%ss') AS dateCom_fr, report FROM comments WHERE report = 1";
+
+      $reportComments = $this->executeRequest($sql);
+
+      return $reportComments;
+    }
+
     // Ajoute un commentaire
     public function addComment(Comments $comments)
     {
-      $sql = "INSERT INTO comments(articleId, username, comment, dateCom, report) VALUES(?,?,?,NOW(),0)";
+      $sql = "INSERT INTO comments(articleId, username, comment, dateCom, report) VALUES(?,?,?,NOW(), NULL)";
       $newComment = $this->executeRequest($sql, array($comments->articleId(), $comments->username(), $comments->comment()));
 
       return $newComment;

@@ -18,14 +18,14 @@
       <ul>
         <li><a href="index.php"><i class="fas fa-home"></i> Accueil</a></li>
 
-        <!-- Affiche l'utilisateur si session existe -->
-          <li><a href="index.php?action=login"><i class="fas fa-user-edit"></i>
-            <?php if (empty($_SESSION)) { echo "Administration";
-              } else {
-                echo $_SESSION['username'];
-              }
-            ?>
-          </a></li>
+        <!-- Si pas de session affiche se sonnecter -->
+        <?php if (empty($_SESSION)) { ?>
+          <li><a href="index.php?action=login"><i class="fas fa-user-edit"></i> Se connecter</a></li>
+        <!-- Sinon affiche l'utilisateur et le lien de deconnexion -->
+        <?php } else { ?>
+          <li><a href="index.php?action=login"><i class="fas fa-user-edit"></i> <?= $_SESSION['username']; ?></a></li>
+          <li><a href="index.php?action=disconnect"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a></li>
+        <?php } ?>
       </ul>
     </header>
 

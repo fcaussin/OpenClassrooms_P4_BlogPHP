@@ -16,6 +16,7 @@
       <input type="submit" value="Se connecter">
     </fieldset>
   </form>
+  <p><?= $errorLogin ?></p>
 </div>
 
 <?php $content = ob_get_clean(); ?>

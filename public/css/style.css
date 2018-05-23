@@ -144,3 +144,15 @@ footer {
 .formConnexion input {
   margin: 5px;
 }
+
+/* ---------------- COMMENTAIRES SIGNALES ------------ */
+
+.report {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+}
+
+.report button {
+  width: 80px;
+}
