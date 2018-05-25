@@ -15,17 +15,17 @@
       $this->article = new ArticlesManager;
     }
 
-    // Affiche un aperçu des 3 derniers articles
+
+    // Affiche l'accueil du site 
     public function home()
     {
       // Récupère les les 3 derniers articles avec un apreçu
       $articles = $this->article->getArticles();
       // Récupère la liste des titres des articles
       $articlesList = $this->article->getArticlesList();
-      // Génère la vue home
+      // Génère la vue viewHome
       $view = new View("Home");
       $view->generateView(array('articles' => $articles, 'articlesList' => $articlesList));
     }
-
   }
 ?>

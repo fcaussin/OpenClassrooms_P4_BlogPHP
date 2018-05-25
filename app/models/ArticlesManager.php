@@ -48,7 +48,7 @@
     public function updateArticle(Articles $articles)
     {
       $sql = "UPDATE articles SET title = ?, content = ? WHERE id = ?";
-      $newArticle = $this->executeRequest($sql, array($articles->id(), $articles->title(), $articles->content()));
+      $newArticle = $this->executeRequest($sql, array($articles->title(), $articles->content(), $articles->id()));
 
       return $newArticle;
     }

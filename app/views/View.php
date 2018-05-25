@@ -37,7 +37,7 @@
     {
       // Génération de la partie spécifique de la vue
       $content = $this->generateFile($this->file, $data);
-      // Génération du teplate commun utilisant la partie spécifique
+      // Génération du template commun utilisant la partie spécifique
       $view = $this->generateFile("../app/views/template.php", array("title" => $this->title, "content" => $content));
       // Renvoie de la vue au navigateur
       echo $view;

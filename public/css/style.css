@@ -93,6 +93,10 @@ article p {
   color: blue;
 }
 
+button {
+  width: 90px;
+}
+
 footer {
   text-align: center;
   border: 1px solid rgb(220,220,220);
@@ -151,8 +155,4 @@ footer {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-}
-
-.report button {
-  width: 80px;
 }
