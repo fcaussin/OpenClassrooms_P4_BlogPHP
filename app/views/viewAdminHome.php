@@ -1,35 +1,51 @@
-<?php
-$this->title = "Administration" ?>
+<!-- TITRE DE LA PAGE -->
+<?php $this->title = "Accueil administration" ?>
+
+<!-- MAIN -->
 
 <aside class="aside">
-  <h2>Liste des chapitres</h2>
-  <?php foreach ($articlesList as $articleList): ?>
-    <a href="<?= "index.php?action=article&id=" . $articleList['id'] ?>">
-      <h3 class="articleTitle"><?= $articleList['id'] . " - " . $articleList['title'] ?></h3>
-    </a>
-  <?php endforeach; ?>
+  <h2>Gérer les chapitres</h2>
+  <ul>
+    <li><a href="index.php?action=addArticleView"><i class="fas fa-plus"></i> Ajouter un chapitre</a></li>
+
+    <!-- Liste des titres des articles -->
+    <?php foreach ($articlesList as $articleList): ?>
+      <li><a href="<?= "index.php?action=articleAdmin&id=" . $articleList['id'] ?>">
+        <?= $articleList['title'] ?></a>
+      </li>
+    <?php endforeach; ?>
+  </ul>
 </aside>
 
-<div class="content">
-  <h2>Les commentaires signalés:</h2>
+
+<section class="content">
+  <h2>Gérer les commentaires signalés:</h2>
+
+  <!-- AFFICHE LES COMMENTAIRES SIGNALES -->
   <?php foreach ($comments as $comment): ?>
+    <!-- FORMULAIRE MODIFICATION DU COMMENTAIRE -->
     <form class="listReport" action="index.php?action=updateComment" method="post">
       <fieldset class="report">
-        <legend><b><?= $comment['username'] ?></b> a commenté le chapitre : <?= $comment['articleId']?></legend>
+
+        <!-- Auteur et date d'ajout du commentaire -->
+        <legend><b><?= $comment['username'] ?></b> a commenté :</legend>
         <time>le <?= $comment['dateCom_fr'] ?></time>
 
+        <!-- Contenu du commentaire -->
         <textarea name="txtReportCom" id="textReportCom" rows="8" cols="80"><?= $comment['comment'] ?></textarea>
+
         <div>
           <!-- Bouton valider -->
           <button type="submit">Valider</button>
           <!-- Bouton supprimer -->
-          <button type="submit" name="button" formaction="index.php?action=deleteComment&id=<?= $comment['id'] ?>">Supprimer</button>
+          <button type="submit" formaction="index.php?action=deleteComment&id=<?= $comment['id'] ?>">Supprimer</button>
         </div>
-        <!-- Données envoyées -->
+
+        <!-- Données supplémentaires envoyées -->
         <input type="hidden" name="idArticle" value="<?= $comment['articleId'] ?>" />
         <input type="hidden" name="idComment" value="<?= $comment['id'] ?>" />
         <input type="hidden" name="username" value="<?= $comment['username'] ?>" />
       </fieldset>
     </form>
   <?php endforeach; ?>
-</div>
+</section>

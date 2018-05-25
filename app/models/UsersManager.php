@@ -6,7 +6,7 @@
 
   class UsersManager extends PDOManager
   {
-
+    // Récupère les données d'un utilisateur
     public function getUser($username)
     {
       $sql = "SELECT id, username, password FROM users WHERE username = ?";
