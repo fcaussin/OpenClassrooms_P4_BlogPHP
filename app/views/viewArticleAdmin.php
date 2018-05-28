@@ -12,7 +12,9 @@
       <!-- Liste des titres des articles -->
       <?php foreach ($articlesList as $articleList): ?>
         <li><a href="<?= "index.php?action=articleAdmin&id=" . $articleList['id'] ?>">
-          <?= $articleList['title'] ?></a>
+          <?php if (!$articleList['statut']): ?>
+            <i class="fas fa-exclamation signal"></i>
+          <?php endif; ?><?= $articleList['title'] ?></a>
         </li>
       <?php endforeach; ?>
     </ul>
@@ -24,8 +26,11 @@
 <div class="content">
   <article class="articles">
     <h2 class="articleTitle">Gestion du chapitre : <?= $article['title'] ?></h2>
+    <?php if (!$article['statut']): ?>
+      <p class="signal"><i class="fas fa-exclamation"></i> Ce chapitre n'a pas encore été publié.</p>
+    <?php endif; ?>
     <!-- FORMULAIRE DE MODIFICATION DE L'ARTICLE -->
-    <form action="index.php?action=updateArticle" method="post">
+    <form action="index.php?action=updateArticle&statut=1" method="post">
 
       <!-- Titre et date d'ajout de l'article -->
       <p>
@@ -38,6 +43,7 @@
 
       <!-- bouton valider -->
       <button type="submit">Publier</button>
+      <button type="submit" formaction="index.php?action=updateArticle&statut=0">Enregistrer</button>
       <!-- bouton supprimer -->
       <button type="submit" formaction="index.php?action=deleteArticle&id=<?= $article['id'] ?>">Supprimer</button>
 

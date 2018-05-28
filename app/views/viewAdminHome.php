@@ -12,7 +12,9 @@
       <!-- Liste des titres des articles -->
       <?php foreach ($articlesList as $articleList): ?>
         <li><a href="<?= "index.php?action=articleAdmin&id=" . $articleList['id'] ?>">
-          <?= $articleList['title'] ?></a>
+          <?php if (!$articleList['statut']): ?>
+            <i class="fas fa-exclamation signal"></i>
+          <?php endif; ?><?= $articleList['title'] ?></a>
         </li>
       <?php endforeach; ?>
     </ul>

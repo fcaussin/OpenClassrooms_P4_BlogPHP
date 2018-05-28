@@ -138,13 +138,20 @@
               // Requête d'ajout de l'article
             case 'addArticle':
               if (isset($_SESSION['id'])) {
-                // Récupère les paramètres
-                $title = $this->getParameter($_POST, 'title');
-                $content = $_POST['txtContent'];
-                // Ajoute l'article
-                $this->ctrlUsers->newArticle($title, $content);
-                // Retour à l'accueil de l'administration
-                $this->ctrlUsers->homeAdmin();
+                // Enregistre ou publie l'article en fonction du statut
+                if (isset($_GET['statut'])) {
+                  // Récupère les paramètres
+                  $title = $this->getParameter($_POST, 'title');
+                  $content = $_POST['txtContent'];
+                  $statut = $this->getParameter($_GET, 'statut');
+                  // Ajoute l'article
+                  $this->ctrlUsers->newArticle($title, $content, $statut);
+                  // Retour à l'accueil de l'administration
+                  $this->ctrlUsers->homeAdmin();
+                }
+                else {
+                  throw new \Exception("Statut de l'article non valide");
+                }
               }
               else {
                 throw new \Exception("Vous n'êtes pas connecté");
@@ -170,12 +177,19 @@
               // Requête de modification de l'article
             case 'updateArticle':
               if (isset($_SESSION['id'])) {
+                // Enregistre ou publie l'article en fonction du statut
+                if (isset($_GET['statut'])) {
                 // Récupère les paramètres
                 $id = intval($this->getParameter($_POST, 'idArticle'));
                 $title = $this->getParameter($_POST, 'title');
                 $content = $_POST['txtContent'];
+                $statut = $this->getParameter($_GET, 'statut');
                 // Modifie l'article
-                $this->ctrlUsers->changeArticle($title, $content, $id);
+                $this->ctrlUsers->changeArticle($title, $content, $statut, $id);
+                }
+                else {
+                  throw new \Exeception("Statut de l'article non valide");
+                }
               }
               else {
                 throw new \Exception("Vous n'êtes pas connecté");

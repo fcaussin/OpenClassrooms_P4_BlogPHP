@@ -7,7 +7,8 @@
     private $id,
             $title,
             $content,
-            $dateArt;
+            $dateArt,
+            $statut;
 
     public function hydrate($data)
     {
@@ -49,6 +50,11 @@
       return $this->dateArt;
     }
 
+    public function statut()
+    {
+      return $this->statut;
+    }
+
     // SETTERS
 
     public function setId($id)
@@ -73,6 +79,11 @@
     public function setDateArt($dateArt)
     {
       $this->dateArt = $dateArt;
+    }
+
+    public function setStatut($statut)
+    {
+      $this->statut = (int) $statut;
     }
   }
 ?>
