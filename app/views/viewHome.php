@@ -9,9 +9,11 @@
     <ul>
       <!-- Liste des titres des articles -->
       <?php foreach ($articlesList as $articleList): ?>
+        <?php if ($articleList['statut']): ?>
         <li><a href="<?= "index.php?action=article&id=" . $articleList['id'] ?>">
           <?= $articleList['title'] ?></a>
         </li>
+        <?php endif; ?>
       <?php endforeach; ?>
     </ul>
   </div>

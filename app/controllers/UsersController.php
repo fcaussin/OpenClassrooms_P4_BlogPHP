@@ -108,17 +108,17 @@
 
 
     // Ajoute un nouvel article
-    public function newArticle($title, $content)
+    public function newArticle($title, $content, $statut)
     {
-      $newArticle = new Articles(['title' => $title, 'content' => $content]);
+      $newArticle = new Articles(['title' => $title, 'content' => $content, 'statut' => $statut]);
       $this->article->addArticle($newArticle);
     }
 
 
     // Modifie un article
-    public function changeArticle($title, $content, $id)
+    public function changeArticle($title, $content, $statut, $id)
     {
-      $articleUpdate = new Articles(['title' => $title, 'content' => $content, 'id' => $id]);
+      $articleUpdate = new Articles(['title' => $title, 'content' => $content, 'statut' => $statut, 'id' => $id]);
       $this->article->updateArticle($articleUpdate);
 
       // Raffraîchit la vue viewArticleAdmin

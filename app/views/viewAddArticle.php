@@ -25,7 +25,7 @@
   <h2 class="articleTitle"><i class="far fa-edit"></i> Bonne écriture Mr. <?= $_SESSION['username'] ?></h2>
 
   <!-- FORMULAIRE AJOUT D4ARTICLE -->
-  <form action="index.php?action=addArticle" method="post">
+  <form action="index.php?action=addArticle&statut=0" method="post">
     <p>
       <!-- Titre de l'article -->
       <label for="title">Entrez votre titre :</label>
@@ -34,7 +34,8 @@
     <!-- Contenu de l'article -->
     <textarea name="txtContent" id="mytextarea"></textarea>
     <!-- Bouton d'envoie -->
-    <button type="submit">Publier</button>
+    <button type="submit">Enregistrer</button>
+    <button type="submit" formaction="index.php?action=addArticle&statut=1">Publier</button>
   </form>
   </div>
 </div>
