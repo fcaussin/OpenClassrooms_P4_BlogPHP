@@ -20,10 +20,12 @@
     <!-- HEADER -->
 
     <header id="header">
-      <h1>Billet simple pour l'Alaska</h1>
-
+      <div class="menuTitle">
+        <h1><i class="fab fa-avianex"></i> Billet simple pour l'Alaska</h1>
+        <p>Un roman de Jean Forteroche</p>
+      </div>
       <!-- Menu de navigation -->
-      <ul>
+      <ul class="menu">
         <li><a href="index.php"><i class="fas fa-home"></i> Accueil</a></li>
         <!-- Si pas de session affiche se sonnecter -->
 
@@ -49,7 +51,8 @@
     <!-- FOOTER -->
 
     <footer>
-      <p>Jean Forteroche - Billet simple pour l'Alaska</p>
+      <p>Jean Forteroche - Billet simple pour l'Alaska<br />
+      Projet 4 - OpenClassrooms</p>
     </footer>
     </div>
   </body>

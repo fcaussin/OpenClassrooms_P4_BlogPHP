@@ -31,7 +31,7 @@
 
 /* ------------- REGLES DU SITE ------------- */
 
-/* Mise en page général ------------- */
+/* ------------- Mise en page général ------------- */
 body {
   margin: 0px;
   padding: 0px;
@@ -39,43 +39,144 @@ body {
   display: flex;
   flex-direction: column;
   font-family: 'robotoregular', Arial, sans-serif;
-  background: white;
 }
+
 .bloc_page {
   max-width: 1366px;
   width: 100%;
   margin: auto;
   border: 1px solid grey;
-}
-
-#header {
-  display: flex;
-  border: 1px solid black;
-  justify-content: center;
-}
-
-#header h1 {
-  padding: 10px;
-  border: 1px solid green;
-}
-
-.aside {
-  border-right: 1px solid red;
-  padding: 20px;
-  text-align: center;
+  background: linear-gradient(rgba(49, 135, 149,0.1),rgba(49, 135, 149,0.1)), url(../img/alaska_bckg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
 }
 
 .main {
   display: flex;
   flex-direction: row;
+  margin-top: 90px;
+  min-height: 470px;
+  justify-content: center;
 }
 
 .content {
   display: flex;
   flex-direction: column;
-  padding: 50px;
-  width: 80%;
+  padding: 40px;
+  width: 70%;
 }
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style: none;
+}
+
+/* ------------- HEADER ------------- */
+
+
+#header {
+  display: flex;
+  justify-content: space-between;
+  background-color: rgb(49, 135, 149);
+  color: white;
+  max-width: 1366px;
+  width: 100%;
+  position: fixed;
+  z-index: 1;
+  flex-wrap: wrap;
+}
+
+/* Titre */
+
+.menuTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.menuTitle h1 {
+  padding: 5px 20px 5px 20px;
+  margin: 0;
+  color: rgb(252, 183, 39);
+}
+
+.menuTitle p {
+  margin: 0;
+  padding: 0 10px 15px 10px;
+}
+
+/* Menu de navigation */
+
+.menu {
+  display: flex;
+  padding: 20px;
+  margin: 0;
+}
+
+.menu li {
+  padding:10px;
+}
+
+.menu a {
+  color: white;
+  padding-bottom: 2px;
+  font-size: 0.9em;
+}
+
+.menu a:hover {
+  color: rgb(252, 183, 39);
+  border-bottom: 2px solid rgb(252, 183, 39);
+}
+
+
+/* ------------- ASIDE ------------- */
+
+
+.aside {
+  text-align: center;
+}
+
+.menuAside {
+  display: flex;
+  flex-direction: column;
+  margin: 40px;
+  padding: 20px;
+  border: 3px solid rgb(49, 135, 149);
+  background-color: rgba(49, 135, 149, 0.7);
+  border-radius: 10px;
+  color: rgb(252, 183, 39);
+}
+
+.menuAside h2 {
+  margin-top: 0;
+}
+
+.menuAside ul {
+  padding: 0;
+  margin: 0;
+  color: white;
+}
+
+.menuAside li {
+  padding: 5px;
+}
+
+.menuAside a {
+  font-size: 0.9em;
+  color: white;
+}
+
+.menuAside a:hover {
+  color: rgb(252, 183, 39);
+}
+
+
+/* ------------- CONTENT ------------- */
+
 
 time {
   font-style: italic;
@@ -94,7 +195,17 @@ article p {
 }
 
 button {
-  width: 90px;
+  width: 80px;
+  height: 20px;
+  border-radius: 5px;
+  background-color: rgb(252, 183, 39);
+  color: rgb(49, 135, 149);
+  border: 0;
+  cursor: pointer;
+}
+
+button:active {
+  color: white;
 }
 
 footer {
@@ -106,53 +217,179 @@ footer {
 }
 
 
-/* ------------- FORMULAIRE COMMENTAIRE ------------- */
-
-
-.addComment input {
-  width: 80px;
-}
-
-.addComment {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  width: 50%;
-  min-width: 250px;
-}
-
-#username {
-  width: 160px;
-}
-
-.signal {
-  color: red;
-}
-
 /* ------------- FORMULAIRE DE CONNEXION ------------- */
+
 
 .contentLogin {
   width: 100%;
   height: 400px;
+  margin-top: 90px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: rgb(252, 183, 39);
+}
+
+.contentLogin h2 {
+  font-size: 1.1em;
+}
+
+.login {
   padding: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 3px solid rgb(49, 135, 149);
+  border-radius: 10px;
+  background-color: rgba(49, 135, 149, 0.8);
+
 }
 
 .formConnexion {
-  width: 300px;
+  width: 320px;
   text-align: right;
+}
+
+.formConnexion fieldset {
+  border: 1px solid rgb(252, 183, 39);
 }
 
 .formConnexion input {
   margin: 5px;
 }
 
+
 /* ---------------- COMMENTAIRES SIGNALES ------------ */
+
 
 .report {
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  min-width: 40px;
+}
+
+
+/* ------------- ARTICLE PREVIEW ------------- */
+
+
+.articles {
+  border: 3px solid rgb(49, 135, 149);
+  border-radius: 10px;
+  background-color: rgba(49, 135, 149, 0.8);
+  padding: 20px;
+  color: white;
+  font-size: 0.9em;
+}
+.content h2 {
+  text-decoration-line: underline;
+  color: rgb(252, 183, 39);
+  font-size: 1.5em;
+}
+
+.articleTitle {
+  font-size: 1.3em;
+  margin: 0;
+  margin-bottom: 15px;
+}
+
+.articles a {
+  color: rgb(252, 183, 39);
+}
+
+.articles header {
+  margin-bottom: 25px;
+}
+
+
+/* ------------- COMMENTAIRES -------------*/
+
+
+.comments {
+  border: 3px solid rgb(49, 135, 149);
+  border-radius: 10px;
+  background-color: rgba(49, 135, 149, 0.8);
+  margin-top: 30px;
+  padding: 20px;
+  color: white;
+  font-size: 0.9em;
+}
+
+.comments h3 {
+  color: rgb(252, 183, 39);
+  font-size: 1.5em;
+  text-decoration-line: underline;
+  margin: 0 0 20px 0;
+}
+
+.comments legend {
+  color: rgb(252, 183, 39);
+  font-size: 1.1em;
+}
+
+.comments fieldset {
+  border: 1px solid rgb(252, 183, 39);
+  margin-top: 20px;
+}
+
+.headerReport {
+  display: flex;
+  justify-content: space-between;
+}
+
+.commentsList {
+  border-top: 2px solid rgb(252, 183, 39);
+}
+
+
+.formComment {
+  margin-bottom: 25px;
+}
+
+.addComment {
+  display: flex;
+  flex-direction: column;
+  min-width: 40px;
+}
+
+#username {
+  width: 160px;
+  margin: 10px 0 10px 0;
+}
+
+#txtComment {
+  margin: 10px 0 10px 0;
+}
+
+.signal {
+  color: red;
+  font-size: 1em;
+}
+
+#mytextarea {
+  height: 500px
+}
+
+@media screen and (max-width: 845px) {
+  body {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: 705px) {
+  .main {
+    flex-wrap: wrap;
+  }
+
+  #header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .menuTitle p {
+    display: none;
+  }
+
+  .menu {
+    padding: 0;
+  }
 }
