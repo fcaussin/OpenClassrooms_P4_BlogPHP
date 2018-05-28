@@ -11,7 +11,7 @@
     public function __construct($action)
     {
       // Détermination du nom du fichier vue à partir de l'action
-      $this->file = "../app/views/view" . $action . ".php";
+      $this->file = "../App/Views/view" . $action . ".php";
     }
 
     // Génère un fichier vue et renvoie le résultat
@@ -38,7 +38,7 @@
       // Génération de la partie spécifique de la vue
       $content = $this->generateFile($this->file, $data);
       // Génération du template commun utilisant la partie spécifique
-      $view = $this->generateFile("../app/views/template.php", array("title" => $this->title, "content" => $content));
+      $view = $this->generateFile("../App/Views/template.php", array("title" => $this->title, "content" => $content));
       // Renvoie de la vue au navigateur
       echo $view;
     }

@@ -65,7 +65,7 @@
             case 'login':
               if (empty($_SESSION)) {
                 $errorLogin = null;
-                require('../app/views/viewLogin.php');
+                require('../App/Views/viewLogin.php');
               }
               // Sinon affiche la page accueil d'administration
               else {
@@ -197,7 +197,7 @@
                 throw new \Exception("Vous n'êtes pas connecté");
               }
             break;
-            
+
             // Sinon envoie un message d'erreur
             default:
               throw new \Exception("Action non valide");

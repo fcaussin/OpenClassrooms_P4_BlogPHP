@@ -65,7 +65,7 @@
       // Sinon affiche un message d'erreur
       else {
         $errorLogin = "Votre identifiant ou votre mot de passe est incorrect";
-        require('../app/views/viewLogin.php');
+        require('../App/Views/viewLogin.php');
       }
     }
 

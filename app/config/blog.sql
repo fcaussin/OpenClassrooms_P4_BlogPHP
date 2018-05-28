@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : localhost:8889
--- Généré le :  lun. 28 mai 2018 à 09:23
+-- Généré le :  lun. 28 mai 2018 à 10:24
 -- Version du serveur :  5.6.38
 -- Version de PHP :  7.2.1
 
@@ -30,7 +30,7 @@ CREATE TABLE `articles` (
   `id` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
   `content` text NOT NULL,
-  `dateArt` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `dateArt` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -55,7 +55,7 @@ CREATE TABLE `comments` (
   `articleId` int(11) NOT NULL,
   `username` varchar(255) NOT NULL,
   `comment` text NOT NULL,
-  `dateCom` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `dateCom` datetime NOT NULL,
   `report` tinyint(4) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -84,7 +84,8 @@ INSERT INTO `comments` (`id`, `articleId`, `username`, `comment`, `dateCom`, `re
 (21, 4, 'Elodie', 'Super cet article !! Vivement le prochain', '2018-05-17 00:34:08', NULL),
 (22, 4, 'Elodie', 'Super cet article !! Vivement le prochain', '2018-05-17 02:32:19', NULL),
 (29, 5, 'test', '&lt;strong&gt;test 2 des balises html&lt;/strong&gt;', '2018-05-17 15:08:05', 1),
-(35, 1, '&lt;strong&gt;test&lt;/strong&gt;', 'changement de commentaire dans la partie admin test', '2018-05-23 17:48:21', 1);
+(35, 1, '&lt;strong&gt;test&lt;/strong&gt;', 'changement de commentaire dans la partie admin test', '2018-05-23 17:48:21', 1),
+(38, 3, 'Robert', 'Super cet épisode, j\'ai adoré', '2018-05-28 12:23:42', NULL);
 
 -- --------------------------------------------------------
 
@@ -142,7 +143,7 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT pour la table `comments`
 --
 ALTER TABLE `comments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 
 --
 -- AUTO_INCREMENT pour la table `users`

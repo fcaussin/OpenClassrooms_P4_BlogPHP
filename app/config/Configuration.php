@@ -13,7 +13,7 @@
     private static function getParameters()
     {
       if (self::$parameters == null) {
-        $file = "../app/config/config.ini";
+        $file = "../App/Config/config.ini";
         if (!file_exists($file)) {
           throw new \Exception("Auncun fichier de configuration trouvé");
         }
