@@ -3,6 +3,12 @@
 Créez un blog pour un écrivain.
 
 
+## Installation
+
+- Importez la base de donnée blog.sql qui est dans le dossier config 
+- modifier le fichier config.ini dans le dossier config avec vos paramètre de connexion à la base de donnée
+- pour accéder à la partie admin utiliser le pseudo: "forteroche" et le mot de pass: "password"
+
 ## Énoncé
 
  Vous venez de décrocher un contrat avec Jean Forteroche, acteur et écrivain. Il travaille actuellement sur son prochain roman, "Billet simple pour l'Alaska". Il souhaite innover et le publier par épisode en ligne sur son propre site.

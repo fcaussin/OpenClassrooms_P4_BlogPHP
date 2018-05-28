@@ -266,6 +266,7 @@ footer {
   display: flex;
   flex-direction: column;
   min-width: 40px;
+  flex-wrap: wrap;
 }
 
 
@@ -348,6 +349,7 @@ footer {
 .addComment {
   display: flex;
   flex-direction: column;
+  flex-wrap: wrap;
   min-width: 40px;
 }
 
@@ -358,6 +360,11 @@ footer {
 
 #txtComment {
   margin: 10px 0 10px 0;
+}
+
+textarea {
+  width: 100%;
+
 }
 
 .signal {
