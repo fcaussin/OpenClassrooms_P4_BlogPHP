@@ -23,7 +23,11 @@
 
 
 <div class="content">
-  <h2>Gestion des commentaires signalés:</h2>
+  <h2>Changer le mot de passe :</h2>
+  <!-- LIEN MODIFICATION MOT DE PASSE -->
+  <p class="comments">Pour modifier votre mot de passe <a
+    href ="index.php?action=password">cliquez ici</a></p>
+  <h2>Gestion des commentaires signalés :</h2>
   <div class="comments">
     <!-- AFFICHE LES COMMENTAIRES SIGNALES -->
     <?php foreach ($comments as $comment): ?>

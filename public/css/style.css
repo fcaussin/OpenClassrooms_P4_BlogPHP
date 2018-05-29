@@ -322,6 +322,10 @@ footer {
   margin: 0 0 20px 0;
 }
 
+.comments a {
+  color: rgb(252, 183, 39);
+}
+
 .comments legend {
   color: rgb(252, 183, 39);
   font-size: 1.1em;

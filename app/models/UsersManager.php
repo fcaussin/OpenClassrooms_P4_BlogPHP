@@ -15,5 +15,14 @@
 
       return $user;
     }
+
+    // Modifie l'utilisateur
+    public function updateUser($password, $username, $id)
+    {
+      $sql = "UPDATE users SET password = ?, username = ? WHERE id = ?";
+      $newPassword = $this->executeRequest($sql, array($password, $username, $id));
+
+      return $newPassword;
+    }
   }
 ?>

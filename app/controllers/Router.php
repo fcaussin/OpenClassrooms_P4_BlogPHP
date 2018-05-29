@@ -89,6 +89,26 @@
               $this->ctrlHome->home();
             break;
 
+            // Requête d'affichage de la vue modifier mot de passe
+            case 'password':
+              if (isset($_SESSION['id'])) {
+                $errorLogin = null;
+                require('../App/Views/viewUpdateLogin.php');
+              }
+            break;
+
+            // Requête de modification du mot de passe
+            case 'adminPassword':
+              if (isset($_SESSION['id'])) {
+                // Récupère les paramètres
+                $username = $this->getParameter($_POST, 'username');
+                $password1 = $this->getParameter($_POST, 'password1');
+                $password2 = $this->getParameter($_POST, 'password2');
+                // Modifie le mot de passe
+                $this->ctrlUsers->updatePassword($username, $password1, $password2);
+              }
+            break;
+
               // Requête de modification de commentaire
             case 'updateComment':
               if (isset($_SESSION['id'])) {

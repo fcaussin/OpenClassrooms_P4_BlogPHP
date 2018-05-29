@@ -70,6 +70,29 @@
     }
 
 
+    // Modification du mot de passe
+    public function updatePassword($username, $password1, $password2)
+    {
+      $id = $_SESSION['id'];
+      // Si les mots de passe correspondent
+      if ($password1 == $password2) {
+        // crypte le mot de passe
+        $newPassword = password_hash($password1, PASSWORD_DEFAULT);
+
+        // Modifie le mot de passe
+        $this->users->updateUser($newPassword, $username, $id);
+
+        // Affiche un message
+        $errorLogin = "Votre mot de passe est changé";
+        require('../App/Views/viewUpdateLogin.php');
+      }
+      // Sinon affiche un message d'erreur
+      else {
+        $errorLogin = "Votre mot de passe est incorrect";
+        require('../App/Views/viewUpdateLogin.php');
+      }
+    }
+
     // Destruction de la session a la deconnexion
     public function disconnect()
     {
